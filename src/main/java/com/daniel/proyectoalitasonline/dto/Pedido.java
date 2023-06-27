@@ -6,40 +6,31 @@ import java.sql.Date;
 public class Pedido {
     private String pedidoId;
     private Date fechaPedido;
-    private Date fechaEntrega;
     private Date fechaSalida;
     private String direccion;
     private String metodoPago;
     private BigDecimal totalPagar;
     private String observacion;
-    private String respuestaPago;
+    private String respuestaPagoApp;
     private String status;
     private String direccionIp;
-    private String montoRecibido;
+    private BigDecimal montoRecibido;
+    private Date fechaEntrega;
+    public Pedido(){}
 
-    public Pedido(String pedidoId, Date fechaPedido, Date fechaEntrega, Date fechaSalida, String direccion, String metodoPago, BigDecimal totalPagar, String observacion, String respuestaPago, String status, String direccionIp, String monto_recibido) {
+    public Pedido(String pedidoId, Date fechaPedido, Date fechaSalida, String direccion, String metodoPago, BigDecimal totalPagar, String observacion, String respuestaPagoApp, String status, String direccionIp, BigDecimal montoRecibido, Date fechaEntrega) {
         this.pedidoId = pedidoId;
         this.fechaPedido = fechaPedido;
-        this.fechaEntrega = fechaEntrega;
         this.fechaSalida = fechaSalida;
         this.direccion = direccion;
         this.metodoPago = metodoPago;
         this.totalPagar = totalPagar;
         this.observacion = observacion;
-        this.respuestaPago = respuestaPago;
+        this.respuestaPagoApp = respuestaPagoApp;
         this.status = status;
         this.direccionIp = direccionIp;
-        this.montoRecibido = monto_recibido;
-    }
-
-    public Pedido(){}
-
-    public Date getFechaSalida() {
-        return fechaSalida;
-    }
-
-    public void setFechaSalida(Date fechaSalida) {
-        this.fechaSalida = fechaSalida;
+        this.montoRecibido = montoRecibido;
+        this.fechaEntrega = fechaEntrega;
     }
 
     public String getPedidoId() {
@@ -58,12 +49,12 @@ public class Pedido {
         this.fechaPedido = fechaPedido;
     }
 
-    public Date getFechaEntrega() {
-        return fechaEntrega;
+    public Date getFechaSalida() {
+        return fechaSalida;
     }
 
-    public void setFechaEntrega(Date fechaEntrega) {
-        this.fechaEntrega = fechaEntrega;
+    public void setFechaSalida(Date fechaSalida) {
+        this.fechaSalida = fechaSalida;
     }
 
     public String getDireccion() {
@@ -98,12 +89,12 @@ public class Pedido {
         this.observacion = observacion;
     }
 
-    public String getRespuestaPago() {
-        return respuestaPago;
+    public String getRespuestaPagoApp() {
+        return respuestaPagoApp;
     }
 
-    public void setRespuestaPago(String respuestaPago) {
-        this.respuestaPago = respuestaPago;
+    public void setRespuestaPagoApp(String respuestaPagoApp) {
+        this.respuestaPagoApp = respuestaPagoApp;
     }
 
     public String getStatus() {
@@ -122,11 +113,19 @@ public class Pedido {
         this.direccionIp = direccionIp;
     }
 
-    public String getMonto_recibido() {
+    public BigDecimal getMontoRecibido() {
         return montoRecibido;
     }
 
-    public void setMonto_recibido(String monto_recibido) {
-        this.montoRecibido = monto_recibido;
+    public void setMontoRecibido(BigDecimal montoRecibido) {
+        this.montoRecibido = montoRecibido;
+    }
+
+    public Date getFechaEntrega() {
+        return fechaEntrega;
+    }
+
+    public void setFechaEntrega(Date fechaEntrega) {
+        this.fechaEntrega = fechaEntrega;
     }
 }
