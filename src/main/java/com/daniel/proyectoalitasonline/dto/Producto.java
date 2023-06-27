@@ -8,6 +8,24 @@ public class Producto {
     private BigDecimal precio;
     private String categoriaId;
     private Boolean isCombo;
+    private Integer stock;
+
+    public Producto(String productoId, String nombre, BigDecimal precio, String categoriaId, Boolean isCombo, Integer stock) {
+        this.productoId = productoId;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.categoriaId = categoriaId;
+        this.isCombo = isCombo;
+        this.stock = stock;
+    }
+    public Producto(){};
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
+    }
 
     public String getProductoId() {
         return productoId;

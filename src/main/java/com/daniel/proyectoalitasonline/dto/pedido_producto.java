@@ -5,6 +5,15 @@ public class pedido_producto {
     private String productoId;
     private String cantidad;
 
+
+    public pedido_producto(String pedidoId, String productoId, String cantidad) {
+        this.pedidoId = pedidoId;
+        this.productoId = productoId;
+        this.cantidad = cantidad;
+    }
+
+    public pedido_producto(){}
+
     public String getPedidoId() {
         return pedidoId;
     }

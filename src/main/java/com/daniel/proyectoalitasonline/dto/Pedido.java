@@ -7,6 +7,7 @@ public class Pedido {
     private String pedidoId;
     private Date fechaPedido;
     private Date fechaEntrega;
+    private Date fechaSalida;
     private String direccion;
     private String metodoPago;
     private BigDecimal totalPagar;
@@ -14,7 +15,32 @@ public class Pedido {
     private String respuestaPago;
     private String status;
     private String direccionIp;
-    private String monto_recibido;
+    private String montoRecibido;
+
+    public Pedido(String pedidoId, Date fechaPedido, Date fechaEntrega, Date fechaSalida, String direccion, String metodoPago, BigDecimal totalPagar, String observacion, String respuestaPago, String status, String direccionIp, String monto_recibido) {
+        this.pedidoId = pedidoId;
+        this.fechaPedido = fechaPedido;
+        this.fechaEntrega = fechaEntrega;
+        this.fechaSalida = fechaSalida;
+        this.direccion = direccion;
+        this.metodoPago = metodoPago;
+        this.totalPagar = totalPagar;
+        this.observacion = observacion;
+        this.respuestaPago = respuestaPago;
+        this.status = status;
+        this.direccionIp = direccionIp;
+        this.montoRecibido = monto_recibido;
+    }
+
+    public Pedido(){}
+
+    public Date getFechaSalida() {
+        return fechaSalida;
+    }
+
+    public void setFechaSalida(Date fechaSalida) {
+        this.fechaSalida = fechaSalida;
+    }
 
     public String getPedidoId() {
         return pedidoId;
@@ -97,10 +123,10 @@ public class Pedido {
     }
 
     public String getMonto_recibido() {
-        return monto_recibido;
+        return montoRecibido;
     }
 
     public void setMonto_recibido(String monto_recibido) {
-        this.monto_recibido = monto_recibido;
+        this.montoRecibido = monto_recibido;
     }
 }
