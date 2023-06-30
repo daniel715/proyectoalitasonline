@@ -1,18 +1,18 @@
 package com.daniel.proyectoalitasonline.dto;
 
-public class pedido_producto {
+public class PedidoProducto {
     private String pedidoId;
     private String productoId;
-    private String cantidad;
+    private Integer cantidad;
 
 
-    public pedido_producto(String pedidoId, String productoId, String cantidad) {
+    public PedidoProducto(String pedidoId, String productoId, Integer cantidad) {
         this.pedidoId = pedidoId;
         this.productoId = productoId;
         this.cantidad = cantidad;
     }
 
-    public pedido_producto(){}
+    public PedidoProducto(){}
 
     public String getPedidoId() {
         return pedidoId;
@@ -30,11 +30,11 @@ public class pedido_producto {
         this.productoId = productoId;
     }
 
-    public String getCantidad() {
+    public Integer getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(String cantidad) {
+    public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
     }
 }

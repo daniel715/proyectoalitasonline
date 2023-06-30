@@ -76,7 +76,7 @@ public class CategoriaRepository implements ICategoriaRepository {
     private Categoria mapRowToCategoria(ResultSet row, int rowNum)
             throws SQLException {
         return new Categoria(
-                row.getString("id_categoria"),
+                row.getString("categoria_id"),
                 row.getString("nombre")
         );
     }
