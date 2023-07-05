@@ -6,7 +6,7 @@ import java.sql.Date;
 public class Pedido {
     private String pedidoId;
     private Date fechaPedido;
-    private Date fechaSalida;
+    private Date fechaEntrega;
     private String direccion;
     private String metodoPago;
     private BigDecimal totalPagar;
@@ -15,7 +15,7 @@ public class Pedido {
     private String status;
     private String direccionIp;
     private BigDecimal montoRecibido;
-    private Date fechaEntrega;
+    private Date fechaSalida;
     public Pedido(){}
 
     public Pedido(String pedidoId, Date fechaPedido, Date fechaSalida, String direccion, String metodoPago, BigDecimal totalPagar, String observacion, String respuestaPagoApp, String status, String direccionIp, BigDecimal montoRecibido, Date fechaEntrega) {
