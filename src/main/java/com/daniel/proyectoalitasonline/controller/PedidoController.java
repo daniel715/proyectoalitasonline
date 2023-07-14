@@ -34,8 +34,8 @@ public class PedidoController {
 
     @PostMapping(path = "/save", consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public Pedido savePedido(@RequestBody Pedido categoria) {
-        return pedidoRepository.save(categoria);
+    public Pedido savePedido(@RequestBody Pedido pedido) {
+        return pedidoRepository.save(pedido);
     }
 
     @PatchMapping(path = "/update/{pedidoId}", consumes = "application/json")

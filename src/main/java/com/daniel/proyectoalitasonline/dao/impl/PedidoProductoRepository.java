@@ -3,6 +3,7 @@ package com.daniel.proyectoalitasonline.dao.impl;
 
 import com.daniel.proyectoalitasonline.dao.IPedidoProductoRepository;
 import com.daniel.proyectoalitasonline.dto.PedidoProducto;
+import com.daniel.proyectoalitasonline.dto.RespuestaTotalPorPedido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -34,15 +35,19 @@ public class PedidoProductoRepository implements IPedidoProductoRepository {
     }
 
     @Override
-    public PedidoProducto save(PedidoProducto pedidoProducto) {
+    public Iterable<RespuestaTotalPorPedido> findAllTotalPorPedido() {
+        return jdbcTemplate.query("call get_total_pagar_por_pedido()", this::mapRowToRespuestaTotalPorPedido);
+    }
+
+    @Override
+    public Iterable<PedidoProducto> save(Iterable<PedidoProducto> pedidoProducto) {
         jdbcTemplate.update(
-                "call producto_has_pedido_save(?,?,?)",
-                pedidoProducto.getPedidoId(),
-                pedidoProducto.getProductoId(),
-                pedidoProducto.getCantidad()
+                "call producto_has_pedido_save(?)",
+                pedidoProducto
         );
         return pedidoProducto;
     }
+
 
     @Override
     public PedidoProducto updatePedidoProducto(String pedidoId, String productoId, PedidoProducto pedidoProducto) {
@@ -74,6 +79,14 @@ public class PedidoProductoRepository implements IPedidoProductoRepository {
                 row.getString("producto_id"),
                 row.getString("pedido_id"),
                 row.getInt("cantidad")
+        );
+    }
+
+    private RespuestaTotalPorPedido mapRowToRespuestaTotalPorPedido(ResultSet row, int i)
+            throws SQLException {
+        return new RespuestaTotalPorPedido(
+                row.getString("pedido_id"),
+                row.getBigDecimal("total_price")
         );
     }
 }

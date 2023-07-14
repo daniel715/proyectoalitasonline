@@ -3,6 +3,7 @@ package com.daniel.proyectoalitasonline.controller;
 import com.daniel.proyectoalitasonline.dao.IPedidoProductoRepository;
 import com.daniel.proyectoalitasonline.dto.Categoria;
 import com.daniel.proyectoalitasonline.dto.PedidoProducto;
+import com.daniel.proyectoalitasonline.dto.RespuestaTotalPorPedido;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -26,10 +27,18 @@ public class PedidoproductoController {
         return null;
     }
 
+    @GetMapping("listTotalPorPedido")
+    public Iterable<RespuestaTotalPorPedido> listAllTotalPorPedido(){
+        if (pedidoProductoRepository.findAll().toString() != null) {
+            return pedidoProductoRepository.findAllTotalPorPedido();
+        }
+        return null;
+    }
+
     @PostMapping(path = "/save", consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public PedidoProducto savePedidoProducto(@RequestBody PedidoProducto pedidoProducto) {
-        return pedidoProductoRepository.save(pedidoProducto);
+    public Iterable<PedidoProducto> savePedidoProducto(@RequestBody Iterable<PedidoProducto> pedidoProductos) {
+        return pedidoProductoRepository.save(pedidoProductos);
     }
 
     @PatchMapping(path = "/update/{pedidoId}/{productoId}", consumes = "application/json")

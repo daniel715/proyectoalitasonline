@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -36,7 +37,7 @@ public class PedidoRepository implements IPedidoRepository {
     @Override
     public Pedido save(Pedido pedido) {
         jdbcTemplate.update(
-                "call Categoria_save(?,? ,?,? ,?,? ,?,? ,?,? ,?,?)",
+                "call Pedido_save(?,?,?,?,?,?,?,?,?,?,?,?)",
                 pedido.getPedidoId(),
                 pedido.getFechaPedido(),
                 pedido.getFechaEntrega(),
@@ -92,8 +93,8 @@ public class PedidoRepository implements IPedidoRepository {
             throws SQLException {
         return new Pedido(
                 row.getString("pedido_id"),
-                row.getDate("fecha_pedido"),
-                row.getDate("fecha_entrega"),
+                row.getString("fecha_pedido"),
+                row.getString("fecha_entrega"),
                 row.getString("direccion"),
                 row.getString("metodo_pago"),
                 row.getBigDecimal("total_a_pagar"),
@@ -102,7 +103,7 @@ public class PedidoRepository implements IPedidoRepository {
                 row.getString("status"),
                 row.getString("direccion_ip"),
                 row.getBigDecimal("efectivo_recibido"),
-                row.getDate("fecha_salida")
+                row.getString("fecha_salida")
         );
     }
 }

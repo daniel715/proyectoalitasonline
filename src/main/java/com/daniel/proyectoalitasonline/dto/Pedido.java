@@ -1,12 +1,12 @@
 package com.daniel.proyectoalitasonline.dto;
 
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 public class Pedido {
     private String pedidoId;
-    private Date fechaPedido;
-    private Date fechaEntrega;
+    private String fechaPedido;
+    private String fechaEntrega;
     private String direccion;
     private String metodoPago;
     private BigDecimal totalPagar;
@@ -15,13 +15,14 @@ public class Pedido {
     private String status;
     private String direccionIp;
     private BigDecimal montoRecibido;
-    private Date fechaSalida;
-    public Pedido(){}
+    private String fechaSalida;
 
-    public Pedido(String pedidoId, Date fechaPedido, Date fechaSalida, String direccion, String metodoPago, BigDecimal totalPagar, String observacion, String respuestaPagoApp, String status, String direccionIp, BigDecimal montoRecibido, Date fechaEntrega) {
+    Pedido(){}
+
+    public Pedido(String pedidoId, String fechaPedido, String fechaEntrega, String direccion, String metodoPago, BigDecimal totalPagar, String observacion, String respuestaPagoApp, String status, String direccionIp, BigDecimal montoRecibido, String fechaSalida) {
         this.pedidoId = pedidoId;
         this.fechaPedido = fechaPedido;
-        this.fechaSalida = fechaSalida;
+        this.fechaEntrega = fechaEntrega;
         this.direccion = direccion;
         this.metodoPago = metodoPago;
         this.totalPagar = totalPagar;
@@ -30,7 +31,7 @@ public class Pedido {
         this.status = status;
         this.direccionIp = direccionIp;
         this.montoRecibido = montoRecibido;
-        this.fechaEntrega = fechaEntrega;
+        this.fechaSalida = fechaSalida;
     }
 
     public String getPedidoId() {
@@ -41,20 +42,20 @@ public class Pedido {
         this.pedidoId = pedidoId;
     }
 
-    public Date getFechaPedido() {
+    public String getFechaPedido() {
         return fechaPedido;
     }
 
-    public void setFechaPedido(Date fechaPedido) {
+    public void setFechaPedido(String fechaPedido) {
         this.fechaPedido = fechaPedido;
     }
 
-    public Date getFechaSalida() {
-        return fechaSalida;
+    public String getFechaEntrega() {
+        return fechaEntrega;
     }
 
-    public void setFechaSalida(Date fechaSalida) {
-        this.fechaSalida = fechaSalida;
+    public void setFechaEntrega(String fechaEntrega) {
+        this.fechaEntrega = fechaEntrega;
     }
 
     public String getDireccion() {
@@ -121,11 +122,11 @@ public class Pedido {
         this.montoRecibido = montoRecibido;
     }
 
-    public Date getFechaEntrega() {
-        return fechaEntrega;
+    public String getFechaSalida() {
+        return fechaSalida;
     }
 
-    public void setFechaEntrega(Date fechaEntrega) {
-        this.fechaEntrega = fechaEntrega;
+    public void setFechaSalida(String fechaSalida) {
+        this.fechaSalida = fechaSalida;
     }
 }
