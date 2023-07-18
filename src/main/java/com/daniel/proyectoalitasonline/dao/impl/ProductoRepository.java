@@ -36,7 +36,7 @@ public class ProductoRepository implements IProductoRepository {
     @Override
     public Producto save(Producto producto) {
         jdbcTemplate.update(
-                "call Pedido_save(?,?,?,?,?,?)",
+                "call Producto_save(?,?,?,?,?,?)",
                 producto.getProductoId(),
                 producto.getNombre(),
                 producto.getPrecio(),
