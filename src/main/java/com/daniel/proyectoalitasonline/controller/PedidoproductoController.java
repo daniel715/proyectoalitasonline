@@ -37,7 +37,7 @@ public class PedidoproductoController {
 
     @PostMapping(path = "/save", consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public Iterable<PedidoProducto> savePedidoProducto(@RequestBody Iterable<PedidoProducto> pedidoProductos) {
+    public PedidoProducto savePedidoProducto(@RequestBody PedidoProducto pedidoProductos) {
         return pedidoProductoRepository.save(pedidoProductos);
     }
 
@@ -46,11 +46,11 @@ public class PedidoproductoController {
         return pedidoProductoRepository.updatePedidoProducto(pedidoId, productoId, pedidoProducto);
     }
 
-    @DeleteMapping("/delete/{pedidoId}/{productoId}")
+    @DeleteMapping("/delete/{pedidoId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deletePedidoProducto(@PathVariable("pedidoId") String pedidoId, @PathVariable("productoId") String productoId) {
+    public void deletePedidoProducto(@PathVariable("pedidoId") String pedidoId) {
         try {
-            pedidoProductoRepository.delete(pedidoId, productoId);
+            pedidoProductoRepository.delete(pedidoId);
         } catch (EmptyResultDataAccessException e) {
             System.out.println("No se encontro registro");
         }

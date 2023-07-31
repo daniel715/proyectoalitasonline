@@ -40,10 +40,12 @@ public class PedidoProductoRepository implements IPedidoProductoRepository {
     }
 
     @Override
-    public Iterable<PedidoProducto> save(Iterable<PedidoProducto> pedidoProducto) {
+    public PedidoProducto save(PedidoProducto pedidoProducto) {
         jdbcTemplate.update(
-                "call producto_has_pedido_save(?)",
-                pedidoProducto
+                "call producto_has_pedido_save(?,?,?)",
+                pedidoProducto.getProductoId(),
+                pedidoProducto.getPedidoId(),
+                pedidoProducto.getCantidad()
         );
         return pedidoProducto;
     }
@@ -68,9 +70,9 @@ public class PedidoProductoRepository implements IPedidoProductoRepository {
     }
 
     @Override
-    public void delete(String pedidoId, String productoId) {
-        String sqlquery = "call producto_has_pedido_delete(?, ?);";
-        jdbcTemplate.update(sqlquery, pedidoId, productoId);
+    public void delete(String pedidoId) {
+        String sqlquery = "call producto_has_pedido_delete(?);";
+        jdbcTemplate.update(sqlquery, pedidoId);
     }
 
     private PedidoProducto mapRowToPedidoProducto(ResultSet row, int rowNum)

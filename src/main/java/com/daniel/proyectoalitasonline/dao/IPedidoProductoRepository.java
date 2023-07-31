@@ -10,9 +10,9 @@ public interface IPedidoProductoRepository {
 
     Iterable<RespuestaTotalPorPedido> findAllTotalPorPedido();
 
-    Iterable<PedidoProducto> save(Iterable<PedidoProducto> pedidoProducto);
+    PedidoProducto save(PedidoProducto pedidoProducto);
 
     PedidoProducto updatePedidoProducto(String pedidoId, String productoId, PedidoProducto pedidoProducto);
 
-    void delete(String pedidoId, String productoId);
+    void delete(String pedidoId);
 }
