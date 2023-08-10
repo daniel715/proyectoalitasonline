@@ -1,7 +1,6 @@
 package com.daniel.proyectoalitasonline.dao.impl;
 
 import com.daniel.proyectoalitasonline.dao.IPedidoRepository;
-import com.daniel.proyectoalitasonline.dto.Categoria;
 import com.daniel.proyectoalitasonline.dto.Pedido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -62,12 +60,42 @@ public class PedidoRepository implements IPedidoRepository {
             if (pedido.getFechaPedido() != null) {
                 pedidoToSend.setFechaPedido(pedido.getFechaPedido());
             }
+            if (pedido.getFechaEntrega() != null) {
+                pedidoToSend.setFechaEntrega(pedido.getFechaEntrega());
+            }
+            if (pedido.getDireccion() != null) {
+                pedidoToSend.setDireccion(pedido.getDireccion());
+            }
+            if (pedido.getMetodoPago() != null) {
+                pedidoToSend.setMetodoPago(pedido.getMetodoPago());
+            }
+            if (pedido.getTotalPagar() != null) {
+                pedidoToSend.setTotalPagar(pedido.getTotalPagar());
+            }
+            if (pedido.getObservacion() != null) {
+                pedidoToSend.setObservacion(pedido.getObservacion());
+            }
+            if (pedido.getRespuestaPagoApp() != null) {
+                pedidoToSend.setRespuestaPagoApp(pedido.getRespuestaPagoApp());
+            }
+            if (pedido.getStatus() != null) {
+                pedidoToSend.setStatus(pedido.getStatus());
+            }
+            if (pedido.getDireccionIp() != null) {
+                pedidoToSend.setDireccionIp(pedido.getDireccionIp());
+            }
+            if (pedido.getMontoRecibido() != null) {
+                pedidoToSend.setMontoRecibido(pedido.getMontoRecibido());
+            }
+            if (pedido.getFechaSalida() != null) {
+                pedidoToSend.setFechaSalida(pedido.getFechaSalida());
+            }
+
             String sqlquery = "call Pedido_update(?,?,?,?,?,?,?,?,?,?,?,? )";
             jdbcTemplate.update(sqlquery,
                     pedidoToSend.getPedidoId(),
                     pedidoToSend.getFechaPedido(),
                     pedidoToSend.getFechaEntrega(),
-                    pedidoToSend.getDireccion(),
                     pedidoToSend.getDireccion(),
                     pedidoToSend.getMetodoPago(),
                     pedidoToSend.getTotalPagar(),
