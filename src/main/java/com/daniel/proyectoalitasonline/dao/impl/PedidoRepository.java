@@ -35,13 +35,12 @@ public class PedidoRepository implements IPedidoRepository {
     @Override
     public Pedido save(Pedido pedido) {
         jdbcTemplate.update(
-                "call Pedido_save(?,?,?,?,?,?,?,?,?,?,?,?)",
+                "call Pedido_save(?,?,?,?,?,?,?,?,?,?,?)",
                 pedido.getPedidoId(),
                 pedido.getFechaPedido(),
                 pedido.getFechaEntrega(),
                 pedido.getDireccion(),
                 pedido.getMetodoPago(),
-                pedido.getTotalPagar(),
                 pedido.getObservacion(),
                 pedido.getRespuestaPagoApp(),
                 pedido.getStatus(),
@@ -69,9 +68,6 @@ public class PedidoRepository implements IPedidoRepository {
             if (pedido.getMetodoPago() != null) {
                 pedidoToSend.setMetodoPago(pedido.getMetodoPago());
             }
-            if (pedido.getTotalPagar() != null) {
-                pedidoToSend.setTotalPagar(pedido.getTotalPagar());
-            }
             if (pedido.getObservacion() != null) {
                 pedidoToSend.setObservacion(pedido.getObservacion());
             }
@@ -91,14 +87,13 @@ public class PedidoRepository implements IPedidoRepository {
                 pedidoToSend.setFechaSalida(pedido.getFechaSalida());
             }
 
-            String sqlquery = "call Pedido_update(?,?,?,?,?,?,?,?,?,?,?,? )";
+            String sqlquery = "call Pedido_update(?,?,?,?,?,?,?,?,?,?,? )";
             jdbcTemplate.update(sqlquery,
                     pedidoToSend.getPedidoId(),
                     pedidoToSend.getFechaPedido(),
                     pedidoToSend.getFechaEntrega(),
                     pedidoToSend.getDireccion(),
                     pedidoToSend.getMetodoPago(),
-                    pedidoToSend.getTotalPagar(),
                     pedidoToSend.getObservacion(),
                     pedidoToSend.getRespuestaPagoApp(),
                     pedidoToSend.getStatus(),
@@ -125,7 +120,6 @@ public class PedidoRepository implements IPedidoRepository {
                 row.getString("fecha_entrega"),
                 row.getString("direccion"),
                 row.getString("metodo_pago"),
-                row.getBigDecimal("total_a_pagar"),
                 row.getString("observacion"),
                 row.getString("respuesta_pago_app"),
                 row.getString("status"),

@@ -1,7 +1,6 @@
 package com.daniel.proyectoalitasonline.dto;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 public class Pedido {
     private String pedidoId;
@@ -9,7 +8,6 @@ public class Pedido {
     private String fechaEntrega;
     private String direccion;
     private String metodoPago;
-    private BigDecimal totalPagar;
     private String observacion;
     private String respuestaPagoApp;
     private String status;
@@ -17,15 +15,15 @@ public class Pedido {
     private BigDecimal montoRecibido;
     private String fechaSalida;
 
-    Pedido(){}
+    Pedido() {
+    }
 
-    public Pedido(String pedidoId, String fechaPedido, String fechaEntrega, String direccion, String metodoPago, BigDecimal totalPagar, String observacion, String respuestaPagoApp, String status, String direccionIp, BigDecimal montoRecibido, String fechaSalida) {
+    public Pedido(String pedidoId, String fechaPedido, String fechaEntrega, String direccion, String metodoPago, String observacion, String respuestaPagoApp, String status, String direccionIp, BigDecimal montoRecibido, String fechaSalida) {
         this.pedidoId = pedidoId;
         this.fechaPedido = fechaPedido;
         this.fechaEntrega = fechaEntrega;
         this.direccion = direccion;
         this.metodoPago = metodoPago;
-        this.totalPagar = totalPagar;
         this.observacion = observacion;
         this.respuestaPagoApp = respuestaPagoApp;
         this.status = status;
@@ -72,14 +70,6 @@ public class Pedido {
 
     public void setMetodoPago(String metodoPago) {
         this.metodoPago = metodoPago;
-    }
-
-    public BigDecimal getTotalPagar() {
-        return totalPagar;
-    }
-
-    public void setTotalPagar(BigDecimal totalPagar) {
-        this.totalPagar = totalPagar;
     }
 
     public String getObservacion() {
